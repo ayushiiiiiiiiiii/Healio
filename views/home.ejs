@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+    body {
+    background-image: url('bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    }
+     .welcome-heading {
+        font-size: 5vw !important;
+    }
+    .welcome-text {
+        font-size: 3vw;
+    }
+    @media (min-width: 768px) {
+        .welcome-heading {
+            font-size: 6rem ;
+        }
+        .welcome-text {
+            font-size: 1.5rem;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <%- include('partials/header.ejs') %>
+    <div class="min-h-screen flex items-center justify-start p-8">
+     <div>
+        <h1 class="welcome-heading font-extrabold text-pink-600 mb-4">
+            Healio <br> Your AI Mental Health <br> Companion
+        </h1>
+        <p class="welcome-text text-gray-700 mb-8">
+            A step towards a healthier, happier you.
+        </p>
+        <a href="/chat" class="bg-pink-500 hover:bg-pink-600 rounded-lg text-white p-4">
+           Let's Talk
+        </a>
+    </div>
+</div>
+</body>
+
+</html>

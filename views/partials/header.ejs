@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title></title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kumar+One&family=Libertinus+Math&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Playwrite+CO+Guides&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-image: url('bg.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Header */
+        .header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px) saturate(180%);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a4a4a;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff69b4;
+        }
+
+        /* Hamburger Menu */
+        .menu-icons {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .menu-icons .close-icon {
+            display: none;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 767px) {
+            .menu-icons {
+                display: block;
+                position: fixed;
+                /* fix it to top-right */
+                top: 1rem;
+                right: 1.5rem;
+                z-index: 1100;
+                /* above nav menu */
+            }
+
+            .nav-links {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 70%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.55);
+                backdrop-filter: blur(15px) saturate(90%);
+                transform: translateX(100%);
+                transition: transform 1s ease-in-out;
+                padding-top: 80px;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                 z-index: 1000;     
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .menu-icons.active .hamburger-icon {
+                display: none;
+            }
+
+            .menu-icons.active .close-icon {
+                display: block;
+            }
+
+            .nav-links a {
+                padding: 1rem 2rem;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            }
+        }
+
+
+
+
+        .logo {
+            font-family: "Merriweather", serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 100;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <span class="logo">Healio</span>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#chat">Chat</a>
+                <a href="#resources">Resources</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="menu-icons">
+                <i class="fa-solid fa-bars hamburger-icon"></i>
+                <i class="fa-solid fa-xmark close-icon"></i>
+            </div>
+        </div>
+    </header>
+    <script>
+        const menuIcons = document.querySelector('.menu-icons');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuIcons.addEventListener('click', () => {
+            navLinks.classList.toggle('active');   // toggle menu
+            menuIcons.classList.toggle('active');  // toggle hamburger / cross
+        });
+
+    </script>
+</body>
+
+
+</html>
