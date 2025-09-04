@@ -17,5 +17,5 @@ A safe and supportive AI-powered mental health chatbot designed to provide empat
 ## 🛠️ Tech Stack  
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
-- **Frontend:** EJS, HTML5, CSS3, JavaScript
+- **Frontend:** EJS, HTML, CSS, Tailwind CSS, JavaScript
 - **AI:** Google Gemini API
