@@ -152,6 +152,32 @@
         .form-submit-btn:hover {
             background: #ff1493;
         }
+        #messageContainer{
+            position: fixed !important;
+            top: 1rem !important;
+            right: 1rem !important;
+        }
+
+        #messageContainer.success {
+            padding: 12px;
+            margin: 12px;
+            border-radius: 10%;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        #messageContainer.error {
+            padding: 12px;
+            margin: 12px;
+            border-radius: 10%;
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+
+        }
 
         @media (min-width: 768px) {
             .container {
@@ -179,85 +205,107 @@
 
 <body>
 
-    <div class="container">
-        <div class="left-panel">
-            <h1 class="site-name">
-                HEALIO
-            </h1>
-            <p>Talk it out. Feel better.</p>
+
+
+    <% if (typeof message !=='undefined' ) { %>
+        <div id="messageContainer" class="w-full mb-4 px-4 py-2 rounded <%= type %>">
+            <%= message %>
         </div>
-        <div class="right-panel">
-            <div class="auth-buttons">
-                <button id="signInBtn" class="auth-btn">Sign In</button>
-                <button id="signUpBtn" class="auth-btn">Sign Up</button>
-            </div>
-
-            <div id="signInForm" class="form-container">
-                <h2>Sign In</h2>
-                <form>
-                    <div class="form-group">
-                        <input type="text" placeholder="Username" required>
+        <% } else { %>
+            <div id="messageContainer" class="w-full mb-4 hidden px-4 py-2 rounded fixed top-4 left-4 z-50"></div>
+            <% } %>
+            
+                <div class="container">
+                    <div class="left-panel">
+                        <h1 class="site-name">
+                            HEALIO
+                        </h1>
+                        <p>Talk it out. Feel better.</p>
                     </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" required>
+
+
+
+
+
+                    <div class="right-panel">
+                        <div class="auth-buttons">
+                            <button id="signInBtn" class="auth-btn">Sign In</button>
+                            <button id="signUpBtn" class="auth-btn">Sign Up</button>
+                        </div>
+
+                        <div id="signInForm" class="form-container">
+                            <h2>Sign In</h2>
+                            <form action="/signin" method="post">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Username" required name="username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Password" required name="password">
+                                </div>
+                                <button type="submit" class="form-submit-btn">Login</button>
+                            </form>
+                        </div>
+
+                        <div id="signUpForm" class="form-container">
+                            <h2>Sign Up</h2>
+                            <form action="/signup" method="post">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Username" required name="username">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email" required name="email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" placeholder="Password" required name="password">
+                                </div>
+                                <button type="submit" class="form-submit-btn">Register</button>
+                            </form>
+                        </div>
                     </div>
-                    <button type="submit" class="form-submit-btn">Login</button>
-                </form>
-            </div>
+                </div>
 
-            <div id="signUpForm" class="form-container">
-                <h2>Sign Up</h2>
-                <form>
-                    <div class="form-group">
-                        <input type="text" placeholder="Username" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" required>
-                    </div>
-                    <button type="submit" class="form-submit-btn">Register</button>
-                </form>
-            </div>
-        </div>
-    </div>
+                <script>
+                    const signInBtn = document.getElementById('signInBtn');
+                    const signUpBtn = document.getElementById('signUpBtn');
+                    const signInForm = document.getElementById('signInForm');
+                    const signUpForm = document.getElementById('signUpForm');
 
-    <script>
-    const signInBtn = document.getElementById('signInBtn');
-    const signUpBtn = document.getElementById('signUpBtn');
-    const signInForm = document.getElementById('signInForm');
-    const signUpForm = document.getElementById('signUpForm');
+                    function hideAllForms() {
+                        signInForm.classList.remove('active');
+                        signUpForm.classList.remove('active');
+                    }
 
-    function hideAllForms() {
-        signInForm.classList.remove('active');
-        signUpForm.classList.remove('active');
-    }
+                    signInBtn.addEventListener('click', () => {
+                        if (!signInForm.classList.contains('active')) {
+                            hideAllForms();
 
-    signInBtn.addEventListener('click', () => {
-        if (!signInForm.classList.contains('active')) {
-            hideAllForms();
-           
-            setTimeout(() => {
-                signInForm.classList.add('active');
-            }, 1000); 
-        } else {
-            hideAllForms();
-        }
-    });
+                            setTimeout(() => {
+                                signInForm.classList.add('active');
+                            }, 1000);
+                        } else {
+                            hideAllForms();
+                        }
+                    });
 
-    signUpBtn.addEventListener('click', () => {
-        if (!signUpForm.classList.contains('active')) {
-            hideAllForms();
-           
-            setTimeout(() => {
-                signUpForm.classList.add('active');
-            }, 1000); 
-        } else {
-            hideAllForms();
-        }
-    });
-</script>
+                    signUpBtn.addEventListener('click', () => {
+                        if (!signUpForm.classList.contains('active')) {
+                            hideAllForms();
+
+                            setTimeout(() => {
+                                signUpForm.classList.add('active');
+                            }, 1000);
+                        } else {
+                            hideAllForms();
+                        }
+                    });
+
+                    const msg = document.getElementById('messageContainer');
+                    if (msg && !msg.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            msg.style.display = "none";
+                        }, 5000);
+                    }
+                </script>
 
 </body>
 
