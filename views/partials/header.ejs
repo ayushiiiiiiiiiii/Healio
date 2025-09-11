@@ -128,6 +128,16 @@
             font-variation-settings:
                 "wdth" 100;
         }
+        .nav-links a.logout {
+            color: white;
+            background: #ff4d4d;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        .nav-links a.logout:hover {
+            background: #e60000;
+        }
     </style>
 </head>
 
@@ -140,6 +150,7 @@
                 <a href="/chat">Chat</a>
                 <a href="#about">About</a>
                 <a href="#feedback">Feedback</a>
+                <a href="/logout" style="color: red; font-weight: 700;">Logout</a>
             </nav>
             <div class="menu-icons">
                 <i class="fa-solid fa-bars hamburger-icon"></i>

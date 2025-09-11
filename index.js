@@ -1,9 +1,11 @@
+require('dotenv').config();
 const express=require('express');
+// console.log("JWT_SECRET:", process.env.JWT_SECRET);
 const app=express();
 const cookieParser=require('cookie-parser')
 const authRoutes = require('./routes/auth');
 const mongoose = require('mongoose');
-
+const verifyToken = require('./middleware/authmiddleware');
 app.set("view engine", "ejs");
 app.use(express.json());
 // Serve static files from the 'public' directory
@@ -21,7 +23,7 @@ app.get('/',(req,res)=>{
 //     res.send("Signup route works!");
 //   });
   
-app.get('/home',(req,res)=>{
+app.get('/home',verifyToken,(req,res)=>{
     res.render("home")
 })
 
