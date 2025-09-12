@@ -1,10 +1,12 @@
+
+require('dotenv').config();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/healio');
+
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("MongoDB connected"))
+.catch(err => console.log("MongoDB connection error:", err));
 
 const userSchema = new mongoose.Schema({
-    // name:String,
-    // email:String,
-    // password:String
     username: { type: String, required: true, trim: true },
     email: { type: String, required: true, unique: true, trim: true },
     password: { type: String, required: true }
