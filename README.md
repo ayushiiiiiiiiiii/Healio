@@ -1,6 +1,5 @@
 # Healio
 
-A safe and supportive AI-powered mental health chatbot designed to provide empathetic conversations and mental health resources.
 
 ## 🚧 Status  
 **In Development** - Core chat functionality and UI design implemented. Chat history, prompts, and some advanced features are still in progress.
