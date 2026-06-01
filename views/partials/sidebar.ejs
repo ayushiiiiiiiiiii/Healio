@@ -1,0 +1,38 @@
+<!-- Sidebar Navigation Partial -->
+<aside class="sidebar">
+    <nav class="sidebar-nav">
+        <a href="/dashboard" class="nav-item" data-page="dashboard">
+            <i class="fas fa-home"></i> Dashboard
+        </a>
+        <a href="/mood-tracker" class="nav-item active" data-page="mood">
+            <i class="fas fa-smile"></i> Mood Tracker
+        </a>
+        <a href="/journal" class="nav-item" data-page="journal">
+            <i class="fas fa-book"></i> Journal
+        </a>
+        <!-- <a href="/wellness" class="nav-item" data-page="wellness">
+            <i class="fas fa-spa"></i> Wellness
+        </a> -->
+        <a href="/profile" class="nav-item" data-page="profile">
+            <i class="fas fa-user"></i> Profile
+        </a>
+    </nav>
+</aside>
+
+<script>
+    // Navigation handler
+    document.querySelectorAll('.nav-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = item.dataset.page;
+            const pages = {
+                dashboard: '/dashboard',
+                mood: '/mood-tracker',
+                journal: '/journal',
+                wellness: '/wellness',
+                profile: '/profile'
+            };
+            window.location.href = pages[page] || '/dashboard';
+        });
+    });
+</script>

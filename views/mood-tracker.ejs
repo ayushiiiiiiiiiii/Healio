@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Tracker - Healio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheet/mood-tracker.css">
+</head>
+
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <div class="dashboard-container" style="margin-top: 80px;">
+        <%- include('partials/sidebar.ejs') %>
+
+        <main class="main-content">
+            <!-- Mood Selector -->
+            <section class="glass-card mood-selector-section">
+                <h1 class="section-title">How are you feeling today?</h1>
+                <div class="mood-buttons">
+                    <button class="mood-btn" data-emotion="happy" title="Happy">😊</button>
+                    <button class="mood-btn" data-emotion="sad" title="Sad">😢</button>
+                    <button class="mood-btn" data-emotion="anxious" title="Anxious">😰</button>
+                    <button class="mood-btn" data-emotion="calm" title="Calm">🧘</button>
+                    <button class="mood-btn" data-emotion="angry" title="Angry">😠</button>
+                    <button class="mood-btn" data-emotion="hopeful" title="Hopeful">🤗</button>
+                    <button class="mood-btn" data-emotion="overwhelmed" title="Overwhelmed">😫</button>
+                    <button class="mood-btn" data-emotion="grateful" title="Grateful">🙏</button>
+                </div>
+
+                <!-- Mood Details -->
+                <div id="mood-details" class="mood-details hidden">
+                    <div class="form-group">
+                        <label>Intensity (1-10)</label>
+                        <div class="intensity-slider">
+                            <input type="range" id="intensity" min="1" max="10" value="5">
+                            <span id="intensity-value">5</span>/10
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>What triggered this feeling? (Optional)</label>
+                        <div class="tags-input">
+                            <div id="triggers" class="tags-list"></div>
+                            <input type="text" id="trigger-input" placeholder="Add trigger (press Enter)">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Activities that might help (Optional)</label>
+                        <div class="tags-input">
+                            <div id="activities" class="tags-list"></div>
+                            <input type="text" id="activity-input" placeholder="Add activity (press Enter)">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notes (Optional)</label>
+                        <textarea id="note" placeholder="Add any additional notes..." rows="4"></textarea>
+                    </div>
+
+                    <button id="save-mood-btn" class="btn-primary" style="width: 100%;">
+                        Save Mood Entry
+                    </button>
+                </div>
+            </section>
+
+            <!-- Mood Trends -->
+            <section class="analytics-grid">
+                <div class="glass-card chart-card">
+                    <h2 class="section-title">Weekly Trend</h2>
+                    <canvas id="trendChart"></canvas>
+                </div>
+                <div class="glass-card chart-card">
+                    <h2 class="section-title">Emotion Frequency</h2>
+                    <canvas id="frequencyChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Historical Moods -->
+            <section class="glass-card history-section">
+                <h2 class="section-title">Your Mood History</h2>
+                <div id="mood-history" class="mood-history">
+                    <p class="loading-text">Loading mood history...</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="/javascript/mood-tracker.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Healio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheet/profile.css">
+</head>
+
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <div class="dashboard-container" style="margin-top: 80px;">
+        <%- include('partials/sidebar.ejs') %>
+
+        <main class="main-content">
+            <!-- Profile Header -->
+            <section class="glass-card profile-header">
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-details">
+                        <h1 id="profile-username">Loading...</h1>
+                        <p id="profile-email">Loading...</p>
+                    </div>
+                </div>
+                <a href="/logout" class="btn-logout">Logout</a>
+            </section>
+
+            <!-- Profile Stats -->
+            <section class="stats-section">
+                <div class="stat-box glass-card">
+                    <div class="stat-number" id="stat-moods">0</div>
+                    <div class="stat-label">Moods Tracked</div>
+                </div>
+                <div class="stat-box glass-card">
+                    <div class="stat-number" id="stat-entries">0</div>
+                    <div class="stat-label">Journal Entries</div>
+                </div>
+                <!-- <div class="stat-box glass-card">
+                    <div class="stat-number" id="stat-chats">0</div>
+                    <div class="stat-label">Conversations</div>
+                </div> -->
+                <div class="stat-box glass-card">
+                    <div class="stat-number" id="stat-streak">0</div>
+                    <div class="stat-label">Day Streak</div>
+                </div>
+            </section>
+
+            <!-- Edit Profile Section -->
+            <section class="glass-card edit-profile-section">
+                <h2 class="section-title">Edit Profile</h2>
+                
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="edit-username" placeholder="Your username">
+                </div>
+
+                <div class="form-group">
+                    <label>Bio</label>
+                    <textarea id="edit-bio" placeholder="Tell us about yourself..." rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferences</label>
+                    <div class="preferences">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="dark-mode-toggle">
+                            Dark Mode
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="notifications-toggle" checked>
+                            Notifications
+                        </label>
+                    </div>
+                </div>
+
+                <button id="save-profile-btn" class="btn-primary">Save Changes</button>
+            </section>
+
+            <!-- Account Section -->
+            <section class="glass-card account-section">
+                <h2 class="section-title">Account Settings</h2>
+                <p class="account-info">Email: <strong id="account-email">Loading...</strong></p>
+                <p class="account-info">Member Since: <strong id="member-since">Loading...</strong></p>
+                <p class="disclaimer">
+                    <strong>Disclaimer:</strong> Healio is a warm companion designed to help you de-stress and reflect, and is NOT a replacement for professional clinical care.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script src="/javascript/profile.js"></script>
+</body>
+
+</html>

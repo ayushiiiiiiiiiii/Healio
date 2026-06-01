@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal - Healio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheet/journal.css">
+</head>
+
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <div class="dashboard-container" style="margin-top: 80px;">
+        <%- include('partials/sidebar.ejs') %>
+
+        <main class="main-content">
+            <!-- New Entry Section -->
+            <section class="glass-card new-entry-section">
+                <h1 class="section-title">Write Your Story</h1>
+                
+                <div id="view-mode" class="view-list">
+                    <div class="search-filter-bar">
+                        <input type="text" id="search-input" placeholder="Search entries...">
+                        <select id="emotion-filter">
+                            <option value="">All Emotions</option>
+                            <option value="happy">😊 Happy</option>
+                            <option value="sad">😢 Sad</option>
+                            <option value="anxious">😰 Anxious</option>
+                            <option value="calm">🧘 Calm</option>
+                            <option value="angry">😠 Angry</option>
+                        </select>
+                        <button id="create-new-btn" class="btn-primary">+ New Entry</button>
+                    </div>
+
+                    <div id="entries-list" class="entries-list">
+                        <p class="loading-text">Loading your journal entries...</p>
+                    </div>
+                </div>
+
+                <div id="edit-mode" class="edit-form hidden">
+                    <div class="form-back-btn">
+                        <button id="back-btn" class="btn-back">← Back</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="entry-title" placeholder="Give your entry a title...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>How are you feeling?</label>
+                        <div class="emotion-buttons">
+                            <button class="emotion-btn" data-emotion="happy">😊</button>
+                            <button class="emotion-btn" data-emotion="sad">😢</button>
+                            <button class="emotion-btn" data-emotion="anxious">😰</button>
+                            <button class="emotion-btn" data-emotion="calm">🧘</button>
+                            <button class="emotion-btn" data-emotion="angry">😠</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Thoughts</label>
+                        <textarea id="entry-content" placeholder="Write your thoughts, feelings, and experiences here..." rows="10"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Add Tags</label>
+                        <div class="tags-input">
+                            <div id="entry-tags" class="tags-list"></div>
+                            <input type="text" id="tag-input" placeholder="Add tag (press Enter)">
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button id="save-entry-btn" class="btn-primary">Save Entry</button>
+                        <button id="delete-entry-btn" class="btn-danger hidden">Delete Entry</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script src="/javascript/journal.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healio - A safe space to journal and track your mood</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            scroll-behavior: smooth;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px) saturate(180%);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.4);
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: #ff69b4;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #4a4a4a;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .feature-card {
+            glass-card;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card {
+            glass-card;
+            padding: 2rem;
+            margin: 1rem;
+            min-width: 300px;
+            flex-shrink: 0;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #4a4a4a;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #ff69b4;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card m-4 md:m-6">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold gradient-text">Healio</h1>
+            <div class="hidden md:flex gap-6 items-center">
+                <a href="#features" class="text-gray-700 hover:text-pink-600 transition">Features</a>
+                <a href="#testimonials" class="text-gray-700 hover:text-pink-600 transition">Testimonials</a>
+                <a href="/home" class="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition">
+                    Dashboard
+                </a>
+            </div>
+            <div class="md:hidden">
+                <a href="/home" class="bg-pink-500 text-white px-4 py-2 rounded-lg text-sm">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section pt-20">
+        <div class="hero-content animate-fade-in">
+            <h1>Healio</h1>
+            <p>A Safe Space to Journal & Track Your Mood</p>
+            <p class="text-base md:text-lg text-gray-600 mb-4">Simply a digital diary where you can write your emotions, reflect on your thoughts, and track your daily mood.</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="/home" class="btn-primary text-white px-8 py-3 rounded-lg font-semibold">
+                    Get Started
+                </a>
+                <a href="#features" class="glass-card text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-white/40 transition">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center gradient-text mb-12">Why Choose Healio?</h2>
+            <div class="feature-grid">
+                <!-- <div class="feature-card glass-card">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="text-xl font-bold mb-2">AI Chatbot</h3>
+                    <p class="text-gray-600">Chat with an empathetic AI companion available 24/7 to listen and support.</p>
+                </div> -->
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="text-xl font-bold mb-2">Mood Tracking</h3>
+                    <p class="text-gray-600">Track your daily moods and visualize emotional patterns over time.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">📔</div>
+                    <h3 class="text-xl font-bold mb-2">Journal</h3>
+                    <p class="text-gray-600">Write and reflect on your thoughts with a private, searchable journal.</p>
+                </div>
+                <!-- <div class="feature-card glass-card">
+                    <div class="feature-icon">🧘</div>
+                    <h3 class="text-xl font-bold mb-2">Wellness Resources</h3>
+                    <p class="text-gray-600">Access breathing exercises, meditation guides, and wellness tips.</p>
+                </div> -->
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="text-xl font-bold mb-2">Daily Affirmations</h3>
+                    <p class="text-gray-600">Receive personalized affirmations to boost your mental well-being.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="text-xl font-bold mb-2">Privacy First</h3>
+                    <p class="text-gray-600">Your data is secure and private. We never share your conversations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-4 bg-white/10 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center gradient-text mb-12">What Users Say</h2>
+            <div class="flex overflow-x-auto pb-4">
+                <div class="testimonial-card glass-card">
+                    <p class="testimonial-text">"Healio has been a game-changer for my daily reflection. Having a safe, private place to reflect on my day is incredibly comforting."</p>
+                    <p class="testimonial-author">- Sarah M.</p>
+                </div>
+                <div class="testimonial-card glass-card">
+                    <p class="testimonial-text">"The mood tracking feature helps me understand my emotional patterns better. Highly recommended!"</p>
+                    <p class="testimonial-author">- John D.</p>
+                </div>
+                <div class="testimonial-card glass-card">
+                    <p class="testimonial-text">"Finally, a safe space to express my feelings without judgment. Healio is exactly what I needed."</p>
+                    <p class="testimonial-author">- Emma R.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="glass-card p-12">
+                <h2 class="text-4xl font-bold gradient-text mb-4">Ready to Begin Your Journey?</h2>
+                <p class="text-gray-600 mb-8 text-lg">Join thousands of people taking control of their daily well-being with Healio.</p>
+                <a href="/home" class="btn-primary text-white px-8 py-4 rounded-lg font-semibold inline-block">
+                    Start Free Today
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer -->
+    <section class="py-10 px-4 bg-yellow-50/50 backdrop-blur-sm">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-sm text-gray-700">
+                <strong>💡 A gentle note:</strong> Healio is a warm companion designed to help you de-stress and reflect. It is <strong>NOT a replacement for professional clinical care</strong>. 
+                If you are going through a tough time, please connect with a professional human support or counselor immediately.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; 2024 Healio - A Safe Space to Journal & Track Your Mood</p>
+            <p class="text-sm text-gray-400 mt-2">Made with ❤️ for your well-being</p>
+        </div>
+    </footer>
+</body>
+
+</html>

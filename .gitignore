@@ -25,3 +25,19 @@ tmp/
 # Optional editor files
 .vscode/
 .idea/
+
+# Commented out/Unused features (Chatbot and Wellness)
+views/chat.ejs
+views/wellness.ejs
+routes/chat.js
+routes/chat-openai.js
+routes/wellness.js
+public/javascript/bot.js
+public/stylesheet/chat.css
+public/javascript/wellness.js
+public/javascript/wellness-new.js
+public/javascript/wellness_backup.js
+public/stylesheet/wellness.css
+models/Wellness.js
+models/Chat.js
+verify-wellness.js

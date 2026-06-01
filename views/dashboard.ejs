@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Healio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheet/dashboard.css">
+</head>
+
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <div class="dashboard-container" style="margin-top: 80px;">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="/dashboard" class="nav-item active" data-page="dashboard">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <a href="/mood-tracker" class="nav-item" data-page="mood">
+                    <i class="fas fa-smile"></i> Mood Tracker
+                </a>
+                <a href="/journal" class="nav-item" data-page="journal">
+                    <i class="fas fa-book"></i> Journal
+                </a>
+                <!-- <a href="/wellness" class="nav-item" data-page="wellness">
+                    <i class="fas fa-spa"></i> Wellness
+                </a> -->
+                <a href="/profile" class="nav-item" data-page="profile">
+                    <i class="fas fa-user"></i> Profile
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section glass-card">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">Welcome back! 👋</h1>
+                    <p class="welcome-subtitle" id="greeting"></p>
+                </div>
+                <div id="affirmation" class="affirmation-card glass-card">
+                    <p id="affirmation-text">Loading your daily affirmation...</p>
+                </div>
+            </section>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card glass-card">
+                    <div class="stat-icon mood-icon">📊</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Moods Tracked</p>
+                        <p class="stat-value" id="mood-count">0</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon journal-icon">📔</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Journal Entries</p>
+                        <p class="stat-value" id="entry-count">0</p>
+                    </div>
+                </div>
+                <div class="stat-card glass-card">
+                    <div class="stat-icon streak-icon">🔥</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Streak Today</p>
+                        <p class="stat-value" id="streak-status">✓</p>
+                    </div>
+                </div>
+                <!-- <div class="stat-card glass-card">
+                    <div class="stat-icon chat-icon">💬</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Chats</p>
+                        <p class="stat-value" id="chat-count">0</p>
+                    </div>
+                </div> -->
+            </section>
+
+            <!-- Mood Analytics -->
+            <section class="analytics-section">
+                <div class="glass-card chart-card">
+                    <h2 class="section-title">Your Mood This Week</h2>
+                    <canvas id="moodChart"></canvas>
+                </div>
+                <div class="glass-card chart-card">
+                    <h2 class="section-title">Emotion Distribution</h2>
+                    <canvas id="emotionChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="glass-card activity-section">
+                <h2 class="section-title">Recent Activity</h2>
+                <div id="activity-list" class="activity-list">
+                    <p class="loading-text">Loading recent activity...</p>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2 class="section-title">Quick Actions</h2>
+                <div class="actions-grid">
+                    <!-- <a href="/chat" class="action-btn glass-card btn-primary">
+                        <i class="fas fa-comments"></i>
+                        <span>Chat with Healio</span>
+                    </a> -->
+                    <a href="/mood-tracker" class="action-btn glass-card btn-secondary">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Log Mood</span>
+                    </a>
+                    <a href="/journal" class="action-btn glass-card btn-secondary">
+                        <i class="fas fa-pen"></i>
+                        <span>Write Journal</span>
+                    </a>
+                    <!-- <a href="/wellness" class="action-btn glass-card btn-secondary">
+                        <i class="fas fa-leaf"></i>
+                        <span>Wellness Tips</span>
+                    </a> -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="/javascript/dashboard.js"></script>
+</body>
+
+</html>
