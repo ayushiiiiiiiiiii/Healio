@@ -41,3 +41,8 @@ public/stylesheet/wellness.css
 models/Wellness.js
 models/Chat.js
 verify-wellness.js
+
+# Test scripts (containing dummy credentials)
+quick-test.js
+test-suite.js
+run-tests.bat
